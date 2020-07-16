@@ -15,7 +15,7 @@ User.create!(
   admin: true
 )
 
-puts '1 Admin user created'
+puts "#{User.where(admin: true).count} Admin user created"
 
 3.times do |user|
   User.create!(
@@ -25,4 +25,18 @@ puts '1 Admin user created'
     name: "User-#{user}"
   )
 end
-puts '3 Regular user created'
+puts "#{User.where(admin: false).count} Regular user created"
+
+User.all.each do |user|
+  5.times do |event|
+    user.events.create(
+      title: "Event-#{event}",
+      active: (event % 3).zero?,
+      free: (event % 3).zero?,
+      starts_at: DateTime.now + ("#{event}".to_i + 1).days,
+      ends_at: DateTime.now + ("#{event}".to_i + 5).days
+    )
+  end
+end
+
+puts "#{Event.count} Events created"
