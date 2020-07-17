@@ -43,7 +43,7 @@ class Events extends React.Component {
         <EventForm createEvent={this.createEvent} />
         <EventsList>
           {this.state.events.map(event => (
-              <Event event={event} key={event.id} />
+              <Event event={event} key={event.id} getEvents={this.getEvents}/>
           ))}
         </EventsList>
       </>

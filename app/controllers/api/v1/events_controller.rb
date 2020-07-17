@@ -17,15 +17,9 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def show
-    # if authorized?
-    #   respond_to do |format|
-    #     format.json { render :show }
-    #   end
-    # else
-    #   handle_unauthorized
-    # end
-
-    render json: @event
+    if authorized?
+      render json: @event
+    end
   end
 
   def update
@@ -53,13 +47,5 @@ class Api::V1::EventsController < ApplicationController
 
   def authorized?
     @event.user == current_user
-  end
-
-  def handle_unauthorized
-    unless authorized?
-      respond_to do |format|
-        format.json { render :unauthorized, status: 401 }
-      end
-    end
   end
 end
