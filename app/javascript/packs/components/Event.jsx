@@ -66,12 +66,11 @@ class Event extends React.Component {
   render() {
     const { event } = this.props
     return (
-        <tr className={`${this.state.free ? 'table-light' : ''}`}>
+        <tr>
           <td>
             <input
                 type="text"
                 defaultValue={event.title}
-                disabled={this.state.free}
                 className="form-control"
                 onChange={this.handleChange}
                 id={`event__title-${event.id}`}
@@ -121,7 +120,6 @@ class Event extends React.Component {
           <td className="text-right">
             <div className="form-check form-check-inline">
               <input
-                  type="boolean"
                   defaultChecked={this.state.free}
                   type="checkbox"
                   className="form-check-input"

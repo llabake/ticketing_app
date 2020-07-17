@@ -102,7 +102,6 @@ class EventForm extends React.Component {
                         id="active"
                         type="checkbox"
                         name="active"
-                        checked
                         onChange={this.onChange}
                     />
                   </div>
